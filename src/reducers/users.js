@@ -1,5 +1,5 @@
 import { RECEIVE_USERS } from '../actions/users'
-import { ADD_POLL } from '../actions/poll'
+import { ADD_POLL } from '../actions/polls'
 
 export const users = (state = {}, action) => {
   switch (action.type) {
