@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Leaderboard from './Leaderboard'
+import Dashboard from './Dashboard'
 import { handleInitialData } from '../actions/shared'
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
     <div className="container">
       {loading === true
         ? null
-        : <Leaderboard />
+        : <Dashboard />
       }
     </div>
   );
