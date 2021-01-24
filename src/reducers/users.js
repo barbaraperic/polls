@@ -1,5 +1,6 @@
 import { RECEIVE_USERS } from '../actions/users'
 import { ADD_POLL } from '../actions/polls'
+import { ADD_ANSWER } from '../actions/answers'
 
 export const users = (state = {}, action) => {
   switch (action.type) {
@@ -19,6 +20,17 @@ export const users = (state = {}, action) => {
           polls: state[author].polls.concat(id)
         }
       }
+    case ADD_ANSWER : {
+      const user = state[action.authedUser]
+      
+      return {
+        ...state,
+        [action.authedUser]: {
+          ...user,
+          answers: users.answers.concat([action.id])
+        }
+      }
+    }
     default: return state
   }
 }
