@@ -1,24 +1,24 @@
 import { savePoll } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
-export const RECEIVE_POLLS = 'RECEIVE_POLLS'
 export const ADD_POLL = 'ADD_POLL'
+export const RECEIVE_POLLS = 'RECEIVE_POLLS'
 
-const addPoll = (poll) => {
+function addPoll (poll) {
   return {
     type: ADD_POLL,
-    poll
+    poll,
   }
 }
 
-export const receivePolls = (poll) => {
+export function receivePolls (polls) {
   return {
     type: RECEIVE_POLLS,
-    poll
+    polls,
   }
 }
 
-export const handleAddPoll = (poll) => {
+export function handeAddPoll (poll) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
 
@@ -26,11 +26,9 @@ export const handleAddPoll = (poll) => {
 
     return savePoll({
       ...poll,
-      authedUser
+      author: authedUser,
     })
-    .then(poll => dispatch(addPoll(poll)))
-    .then(() => dispatch(hideLoading()))
-
-
+      .then((poll) => dispatch(addPoll(poll)))
+      .then(() => dispatch(hideLoading()))
   }
 }

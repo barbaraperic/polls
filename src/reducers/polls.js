@@ -1,8 +1,7 @@
-import { act } from 'react-dom/test-utils'
-import { RECEIVE_POLLS, ADD_POLL } from '../actions/polls'
+import { ADD_POLL, RECEIVE_POLLS } from '../actions/polls'
 import { ADD_ANSWER } from '../actions/answers'
 
-export const polls = (state = {}, action) => {
+export default function polls (state = {}, action) {
   switch (action.type) {
     case RECEIVE_POLLS :
       return {
@@ -12,10 +11,10 @@ export const polls = (state = {}, action) => {
     case ADD_POLL :
       return {
         ...state,
-        [action.poll.id]: action.poll
+        [action.poll.id]: action.poll,
       }
     case ADD_ANSWER :
-      const { authedUser, id, answer } = action
+      const { answer, id, authedUser } = action
       const poll = state[id]
       const votesKey = answer + 'Votes'
 
@@ -23,10 +22,10 @@ export const polls = (state = {}, action) => {
         ...state,
         [action.id]: {
           ...poll,
-          [votesKey]: poll[votesKey].concat(authedUser)
+          [votesKey]: poll[votesKey].concat([authedUser]),
         }
       }
-    default : return state
+    default :
+      return state
   }
-
 }
