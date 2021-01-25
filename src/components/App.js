@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { BrowserRouter as Router } from "react-router-dom";
 
 import Leaderboard from './Leaderboard'
 import Dashboard from './Dashboard'
@@ -18,12 +19,14 @@ const App = () => {
     console.log('state',state)
 
   return (
-    <div className="container">
-      {loading === true
-        ? null
-        : <Dashboard />
-      }
-    </div>
+    <Router>
+      <div className="container">
+        {loading === true
+          ? null
+          : <Dashboard />
+        }
+      </div>
+    </Router>
   );
 }
 

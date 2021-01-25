@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
   const [ list, setList ] = React.useState('unanswered')
@@ -20,32 +21,38 @@ const Dashboard = () => {
   const questions = { answered, unanswered }
 
   return (
-    <>
-      <div className="dashboard-toggle">
-        <button
-          style={{
-            textDecoration: list === unanswered
-            ? 'underlined'
+    <React.Fragment>
+    <div className='dashboard-toggle'>
+      <button
+        style={{
+          textDecoration: list === 'unanswered'
+            ? 'underline'
             : null
-          }}
-          onClick={() => setList('unanswered')}
-        >
+        }}
+        onClick={() => setList('unanswered')}>
           Unanswered
-        </button>
-        <span>|</span>
-        <button
-          style={{
-            textDecoration: list === answered
-            ? 'underlined'
+      </button>
+      <span> | </span>
+      <button
+        style={{
+          textDecoration: list === 'answered'
+            ? 'underline'
             : null
           }}
-          onClick={() => setList('answered')}
-        >
+        onClick={() => setList('answered')}>
           Answered
-        </button>
-      </div>
-    
-    </>
+      </button>
+    </div>
+    <ul className='dashboard-list'>
+      {questions[list].map((poll) => (
+        <li key={poll.id}>
+          <Link to={`polls/${poll.id}`}>
+            {poll.question}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </React.Fragment>
   )
 }
 
