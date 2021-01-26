@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { BrowserRouter as Router } from "react-router-dom";
 
 import Leaderboard from './Leaderboard'
-import Dashboard from './Dashboard'
+import AddPoll from './AddPoll'
 import { handleInitialData } from '../actions/shared'
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
       <div className="container">
         {loading === true
           ? null
-          : <Dashboard />
+          : <AddPoll />
         }
       </div>
     </Router>

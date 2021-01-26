@@ -18,7 +18,7 @@ export function receivePolls (polls) {
   }
 }
 
-export function handeAddPoll (poll) {
+export function handleAddPoll (poll) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
 
