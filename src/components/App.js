@@ -6,6 +6,7 @@ import Nav from './Nav'
 import Dashboard from './Dashboard'
 import Leaderboard from './Leaderboard'
 import AddPoll from './AddPoll'
+import Poll from './Poll'
 import { handleInitialData } from '../actions/shared'
 
 const App = () => {
@@ -31,8 +32,11 @@ const App = () => {
               <Route path="/leaderboard">
                 <Leaderboard />
               </Route>
-              <Route path="/polls">
+              <Route path="/polls/" exact>
                 <AddPoll />
+              </Route>
+              <Route path="/polls/:id">
+                <Poll />
               </Route>
 
             </div>
