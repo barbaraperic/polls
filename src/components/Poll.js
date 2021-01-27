@@ -17,7 +17,9 @@ const Poll = () => {
       <div className="poll-author">
         By <img src={authorAvatar} alt="Author's avatar"/>
       </div>
-
+      <ul>
+        
+      </ul>
     </div>
   )
 }
